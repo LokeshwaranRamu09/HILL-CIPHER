@@ -1,9 +1,11 @@
-# HILL CIPHER
-HILL CIPHER
-EX. NO: 3 AIM:
- 
+# EX NO: 3 - HILL CIPHER
 
-IMPLEMENTATION OF HILL CIPHER
+ ## AIM:IMPLEMENTATION OF HILL CIPHER
+
+
+### NAME:LOKESHWARAN.R
+
+### REG NO: 212224220053
  
 ## To write a C program to implement the hill cipher substitution techniques.
 
@@ -29,7 +31,52 @@ STEP-4: Multiply the two matrices to obtain the cipher text of length three.
 STEP-5: Combine all these groups to get the complete cipher text.
 
 ## PROGRAM 
+```
+text = input("Enter plaintext: ").upper()
+key = []
+
+print("Enter 3x3 key matrix:")
+for i in range(3):
+    row = list(map(int, input().split()))
+    key.append(row)
+
+print("\nKey Matrix:")
+for r in key:
+    print(r)
+
+while len(text) % 3 != 0:
+    text += 'X'
+
+print("Processed Text:", text)
+
+cipher = ""
+
+for i in range(0, len(text), 3):
+    pt = [ord(text[i+j]) - 65 for j in range(3)]
+    ct = [0, 0, 0]
+
+    print("\nBlock:", text[i:i+3])
+
+    for r in range(3):
+        for c in range(3):
+            ct[r] += key[r][c] * pt[c]
+        ct[r] %= 26
+
+    print("Numeric:", ct)
+
+    for num in ct:
+        cipher += chr(num + 65)
+
+print("\nFinal Cipher Text:", cipher)
+```
+
 
 ## OUTPUT
 
+<img width="1606" height="973" alt="Screenshot 2026-04-30 112910" src="https://github.com/user-attachments/assets/8139da34-8f9a-419a-9daa-78d0099654e3" />
+
+
+
+
 ## RESULT
+   The program is executed successfully
